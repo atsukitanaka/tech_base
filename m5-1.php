@@ -3,9 +3,9 @@
 
 <?php 
 //conntect to the detabase
-$dsn = 'データベース名';
-$user = 'ユーザー名';
-$password = 'パスワード';
+$dsn = '*******';
+$user = '*******';
+$password = '******';
 $pdo = new PDO($dsn,$user,$password,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_WARNING));
 
 
@@ -13,7 +13,7 @@ $pdo = new PDO($dsn,$user,$password,array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_WARNIN
 
 //INCERT文
 if(!empty($_POST["name"]) && !empty($_POST["comment"]) && !empty($_POST["pass"]) && empty($_POST["invisible"])){
-    $sql = $pdo -> prepare("INSERT INTO mission5 (name,comment,date,postpass) VALUE(:name,:comment,:date,:postpass)");
+    $sql = $pdo -> prepare("INSERT INTO ******* (name,comment,date,postpass) VALUE(:name,:comment,:date,:postpass)");
     $sql -> bindParam(':name', $name, PDO::PARAM_STR);
     $sql -> bindParam(':comment', $comment, PDO::PARAM_STR);
     $sql -> bindParam(':postpass', $pass, PDO::PARAM_STR);
@@ -25,19 +25,13 @@ if(!empty($_POST["name"]) && !empty($_POST["comment"]) && !empty($_POST["pass"])
         $sql -> execute();
 }
 
-//PWの取得
-// $sql = 'SELECT * FROM mission5';
-// $stmt = $pdo->query($sql);
-// $results = $stmt->fetchAll();
-// foreach($results as $row){
-//     $pass = $row['postpass'];
-// }
+
 
 //編集したい文呼び出し
 if(!empty($_POST["E_num"]) && !empty($_POST["E_pass"])){
     $E_num = $_POST["E_num"];
     $E_pass = $_POST["E_pass"];
-    $sql = 'SELECT * FROM mission5';
+    $sql = 'SELECT * FROM ******';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
     foreach($results as $row){
@@ -62,7 +56,7 @@ if(!empty($_POST["name"]) && !empty($_POST["comment"]) && !empty($_POST["pass"])
     $name = $_POST["name"];
     $comment = $_POST["comment"]; //変更したい名前、変更したいコメントは自分で決めること
     $pass = $_POST["pass"];
-    $sql = 'UPDATE mission5 SET name=:name,comment=:comment,postpass=:postpass WHERE id=:id';
+    $sql = 'UPDATE ****** SET name=:name,comment=:comment,postpass=:postpass WHERE id=:id';
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->bindParam(':comment', $comment, PDO::PARAM_STR);
@@ -77,7 +71,7 @@ if(!empty($_POST["D_num"]) && !empty($_POST["D_pass"])){
     $D_num = $_POST["D_num"];
     $D_pass = $_POST["D_pass"];
    
-    $sql = 'SELECT * FROM mission5';
+    $sql = 'SELECT * FROM ******';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
     foreach($results as $row){
@@ -86,7 +80,7 @@ if(!empty($_POST["D_num"]) && !empty($_POST["D_pass"])){
         
         if($D_num == $id && $D_pass == $pass){
             
-            $sql = 'delete from mission5 where id=:id';
+            $sql = 'delete from ****** where id=:id';
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(':id', $D_num, PDO::PARAM_INT);
             $stmt->execute();
@@ -125,7 +119,7 @@ if(!empty($_POST["D_num"]) && !empty($_POST["D_pass"])){
 <?php
 
 //表示用
- $sql = 'SELECT * FROM mission5';
+ $sql = 'SELECT * FROM ******';
     $stmt = $pdo->query($sql);
     $results = $stmt->fetchAll();
     foreach ($results as $row){
